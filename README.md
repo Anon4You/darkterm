@@ -21,10 +21,9 @@
 
 ---
 
-## Requirements
-
-This toolkit requires the **TermuxVoid** repository for security tools.
-Visit https://termuxvoid.github.io/ to add the repo to Termux.
+> [!NOTE]
+> This toolkit requires the **TermuxVoid** repository for security tools.
+> Visit https://termuxvoid.github.io/ to add the repo to Termux.
 
 ## Installation
 
@@ -35,10 +34,10 @@ chmod +x darkterm.sh
 ./darkterm.sh
 ```
 
-Or create a global shortcut:
+Or create a global shortcut (run this from inside the cloned repo):
 
 ```bash
-ln -sf ~/darkterm/darkterm.sh $PREFIX/bin/darkterm
+ln -sf "$PWD/darkterm.sh" $PREFIX/bin/darkterm
 darkterm
 ```
 
@@ -48,28 +47,20 @@ darkterm
  [1]  Reconnaissance & OSINT           theHarvester, Amass, Subfinder, Whois,
                                         DNSx, DNSmap, Waybackurls, CeWL,
                                         HTTrack, Katana
-
  [2]  Network Scanning & Enumeration   Nmap, fscan, Netcat, HTTPing, gping,
                                         2ping, Traceroute, ARP Scan, Port Sweep
-
  [3]  Web Application Testing          Nikto, SQLmap, Nuclei, HTTPx, Gobuster,
                                         FFUF, Dirb, WAFw00f, WPScan
-
  [4]  Password Attacks & Cracking      John, Hashcat, Hydra, BruteSpray, CUPP,
                                         Hashid, PDFCracker, Kerbrute, OpenSSL
-
  [5]  Exploitation & Post-Exploitation Metasploit, SearchSploit, Netcat Shells,
                                         SSH Tunnels, ProxyChains
-
  [6]  Cryptography & Encoding          OpenSSL, Python Crypto, GPG, Base64,
                                         Hex, URL encode/decode, SSL Analyzer
-
  [7]  Forensics & Analysis             File Analysis, Hashdeep, APKLeaks,
                                         Log Analyzer, Process Monitor
-
  [8]  Utilities                        Wordlist Generator, Password Generator,
                                         IP Info, HTTP Headers, SSH Keys, Logs
-
  [9]  Quick Scans (Automated)           Full Recon, Web Audit, Network Map,
                                         Password Audit, SSL Audit
 ```
@@ -112,9 +103,8 @@ darkterm/
 **Alienkrishn** \[Anon4You\]
 - GitHub: [@Anon4You](https://github.com/Anon4You)
 
-## Legal Disclaimer
-
-This tool is provided for **authorized security testing and educational purposes only**. Unauthorized access to computer systems is illegal. Always obtain explicit written permission before testing. The author is not responsible for any misuse.
+> [!CAUTION]
+> This tool is provided for **authorized security testing and educational purposes only**. Unauthorized access to computer systems is illegal. Always obtain explicit written permission before testing. The author is not responsible for any misuse.
 
 ## License
 
