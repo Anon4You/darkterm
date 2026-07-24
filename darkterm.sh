@@ -16,6 +16,7 @@ TOOLKIT_DIR="$HOME/darkterm"
 LOG_DIR="$TOOLKIT_DIR/logs"
 WORDLIST_DIR="$TOOLKIT_DIR/wordlists"
 LOOT_DIR="$TOOLKIT_DIR/loot"
+LOGOS_DIR="$TOOLKIT_DIR/.logos"
 
 R='\033[1;31m' G='\033[1;32m' Y='\033[1;33m' B='\033[1;34m'
 M='\033[1;35m' C='\033[1;36m' W='\033[1;37m' D='\033[0m'
@@ -24,7 +25,7 @@ M='\033[1;35m' C='\033[1;36m' W='\033[1;37m' D='\033[0m'
 WL_DIR="$PREFIX/share/wordlists"
 
 # Create data dirs if they don't exist
-mkdir -p "$LOG_DIR" "$WORDLIST_DIR" "$LOOT_DIR"
+mkdir -p "$LOG_DIR" "$WORDLIST_DIR" "$LOOT_DIR" "$LOGOS_DIR"
 
 # ═══════════════════════════════════════════════════════════════
 #  WORDLIST RESOLVER: Pick from wordlists package or custom path
@@ -92,19 +93,20 @@ resolve_wl() {
 
 banner() {
     clear
-    echo -e "${R}"
-    cat << 'EOF'
-    ██████╗  █████╗ ██████╗ ██╗  ██╗████████╗███████╗██████╗ ███╗   ███╗
-    ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║
-    ██║  ██║███████║██████╔╝█████╔╝    ██║   █████╗  ██████╔╝██╔████╔██║
-    ██║  ██║██╔══██║██╔══██╗██╔═██╗    ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║
-    ██████╔╝██║  ██║██║  ██║██║  ██╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║
-    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-EOF
-    echo -e "${C}              ══════ ADVANCED ETHICAL HACKING TOOLKIT ══════${D}"
-    echo -e "${Y}                   Authorized Testing Only | v2.0${D}"
-    echo -e "${M}                    Author : Alienkrishn [Anon4You]${D}"
-    echo -e "${D}                    Data   : $TOOLKIT_DIR${D}"
+    local logo_count
+    logo_count=$(find "$LOGOS_DIR" -maxdepth 1 -name 'logo*.txt' -type f 2>/dev/null | wc -l)
+    if [[ "$logo_count" -gt 0 ]]; then
+        local pick=$(( (RANDOM % logo_count) + 1 ))
+        local logo_file
+        logo_file=$(find "$LOGOS_DIR" -maxdepth 1 -name 'logo*.txt' -type f 2>/dev/null | sort | sed -n "${pick}p")
+        echo -e "${R}"
+        cat "$logo_file"
+        echo -e "${D}"
+    fi
+    echo -e "${C}    ══════ ADVANCED ETHICAL HACKING TOOLKIT ══════${D}"
+    echo -e "${Y}       Authorized Testing Only | v2.0${D}"
+    echo -e "${M}           Author : Alienkrishn [Anon4You]${D}"
+    echo -e "${D}           Data   : $TOOLKIT_DIR${D}"
     echo ""
 }
 
