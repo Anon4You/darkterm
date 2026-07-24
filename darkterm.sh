@@ -8,11 +8,17 @@
 # ║            GitHub : https://github.com/Anon4You                  ║
 # ╚══════════════════════════════════════════════════════════════════╝
 
-# Detect script location (works from any directory)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Detect actual script location (resolves symlinks)
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
-# Data always lives in ~/darkterm regardless of where script is cloned
-TOOLKIT_DIR="$HOME/darkterm"
+# Data directory lives next to the script
+TOOLKIT_DIR="$SCRIPT_DIR"
 LOG_DIR="$TOOLKIT_DIR/logs"
 WORDLIST_DIR="$TOOLKIT_DIR/wordlists"
 LOOT_DIR="$TOOLKIT_DIR/loot"
